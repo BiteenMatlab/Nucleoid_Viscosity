@@ -2,7 +2,7 @@
 
 This README describes how to run the `.mlx` scripts in `Acc_Vis_pipeline` in order, including dataloading, parameter setup, and expected outputs.
 
-The pipeline scripts call helper functions from `Supporting_functions` , adding this folder to MATLAB path before running live scripts in `Acc_Vis_pipeline` (including folder `Feret_analysis`).
+The pipeline scripts call helper functions from `Supporting_functions`, adding this folder to MATLAB path before running live scripts in `Acc_Vis_pipeline` (including folder `Feret_analysis`).
 
 ## 1. Prerequisites
 - This pipeline is tested on MATLAB R2024a
