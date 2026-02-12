@@ -1,6 +1,6 @@
 # Macrodomain Mask Workflow (`Macrodomain_mask`)
 
-This README explains how to run the scripts in `Macrodomain_mask` in sequence, including dataloading , parameter setup, and expected outputs.
+This README explains how to run the scripts in `Macrodomain_mask` in sequence, including data loading, parameter setup, and expected outputs.
 
 ## 1. Prerequisites
 
@@ -13,7 +13,6 @@ This README explains how to run the scripts in `Macrodomain_mask` in sequence, i
 1. `Locus_filter.mlx`
 2. `Heatmap_plot.mlx`
 3. `ExtractRegion_HeatMap.mlx`
-4. `Vis_mask.mlx` (for final visualization/export)
 
 ## 3. Script Details
 
@@ -23,7 +22,7 @@ Purpose:
 - Load raw `PhaseMask` and `tracks` from the locus-tracking dataset.
   - Example dataset can be found at DOI [10.5281/zenodo.18598888](https://zenodo.org/records/18598888)
 - Compute cell morphology and apply morphology filter.
-- Compute loci information and apply locus-number / pole-distance / circularity filters.
+- Compute loci information and apply locus-number,  pole-distance and circularity filters.
 - Save filtered trajectories.
 
 What to load:
@@ -91,7 +90,7 @@ Purpose:
 
 Parameters to set:
 - `maskArea_ratio` (default `0.10`, meaning the bins with the highest localization density that are added to 0.1 are used as proxy for macrodomain region)
-- `scale_rate` (default `10`; scaling factor for Kernal Density Estimation)
+- `scale_rate` (default `10`; scaling factor for Kernel Density Estimation)
 - DBSCAN settings used for boundary grouping:
   - `eps = 0.01`, `minpts = 3`
 
@@ -108,6 +107,6 @@ Outputs:
 
 - Some paths are hard-coded to the author environment; update these before running:
   - `uigetdir(...)` default locations
-  - save/load folders in `ExtractRegion_HeatMap.mlx` and `Vis_mask.mlx`
+  - save/load folders in `ExtractRegion_HeatMap.mlx`
 - Repeat `ExtractRegion_HeatMap.mlx` for each locus dataset and save with domain-specific filenames.
-- Boundary files from this folder are consumed by `Acc_Vis_pipeline/Vis_Nuc_Macrodomain.mlx`.
+- Boundary files from this folder are used by `Acc_Vis_pipeline/Vis_Nuc_Macrodomain.mlx`.
