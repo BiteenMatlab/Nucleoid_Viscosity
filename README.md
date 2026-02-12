@@ -60,6 +60,8 @@ Purpose:
 - Build localization heatmap and spatial displacement map (spMap)
 - Determine cell and nucleoid boundaries
 
+Set:
+- Change `interpolation` to `kde` in `Outline_by_htMap(...)` when the exclusion region detected in heatmap is not reasonable
 
 Main outputs:
 - `raw_heatmap`, `htMap` 
@@ -190,7 +192,7 @@ Purpose:
 - Split nucleoid into periphery/core and compute viscosity separately
 
 Set:
-- Segmentation: `Nuc_Seg(...,[cntr_low+0.10, cntr_low],...)`
+- Segmentation: `Nuc_Seg(...,[cntr_low+0.05, cntr_low],...)`
   - e.g. 10% margin added to contour line used to define nucleoid boundary, such that nucleoid is partitioned into periphery (region between nucleoid contour and inner contour) and core (within the inner contour)
 - Fit tolerances: `slack_d = 0.2`, `slack_acc = 0.1` (for both regions)
 
@@ -215,12 +217,12 @@ Purpose:
 
 Important load:
 - Script currently hard-codes macrodomain outline:
-  - load `Domain_outline` from  `...Macrodoamin_outline\Ter_boundary.mat`
+  - load `Domain_outline` from  `...Macrodoamin_outline\Ori_boundary.mat`
 - Macrodomain outline is produced from `Macrodomain_mask` workflows.
 
 Set:
-- `Domain_name = 'Terminus'` (controls output filename)
-- Fit tolerances: `slack_d = 0.18`, `slack_acc = 0.075`
+- `Domain_name = 'Origin'` (controls output filename)
+- Fit tolerances: `slack_d = 0.15`, `slack_acc = 0.075`
 
 Main outputs:
 - `Viscosity_domain`
@@ -248,7 +250,7 @@ Set (compute resources and bootstrap design):
   - `numWorkers = 16`
   - `num_per_loop = 12`
   - `max_parfor = 48`
-- Bootstrap sample size in `Btstrp(...)`: `3600` cells per draw
+- Bootstrap sample size in `Btstrp(...)`: `8000` cells per draw
 - Hyperparameter ranges passed to `Btstrp_Sampling` based on results from **` DynamicSimu.mlx`**:
   - Step size: `25:5:35`
   - Gap: `80:5:110`

@@ -87,11 +87,11 @@ figure;
 histogram(allCI);
 title('Distribution of Localization Confidence Intervals');
 xlabel('Width Confidence Interval (pixels)');
-ylabel('Probability');
+ylabel('Counts');
 
 %% 5. Compute Localization Precision (in physical units)
 locPrecision   = mean(allCI) * pixel_size;
 locPrecisionUB = max(allCI) * pixel_size;
 
-%% 6. Display Diagnostic Information
-fprintf('Mean localization Confidence Interval = %.3f nm \n', locPrecision);
+% %% 6. Display Diagnostic Information
+% fprintf('Mean localization Confidence Interval = %.3f nm \n', locPrecision);
