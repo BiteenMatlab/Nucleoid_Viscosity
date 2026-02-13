@@ -252,9 +252,13 @@ Set (compute resources and bootstrap design):
   - `max_parfor = 48`
 - Bootstrap sample size in `Btstrp(...)`: `8000` cells per draw
 - Hyperparameter ranges passed to `Btstrp_Sampling` based on results from **` DynamicSimu.mlx`**:
-  - Step size: `25:5:35`
-  - Gap: `80:5:110`
+  - Step size: `15:5:25`
+  - Gap: `110:5:140`
   - Score weights: `[0.5, -120]`
+- For periphery and core viscosity calculation:
+  - Go to `Supporting_functions/Btstrp_sampling`, change input `cntr_margin` of `Btstrp_PhyProp` at line 51. (current value = `0.05`)
+- For macrodomain viscosity calculation
+  - In `Btstrp(...)`: `MacroDomain` = `{}` menas the bootstrapping doesn't calcualte macrodomain viscosity in each run. To turn it on, load macrodomain mask (result by running analysis in `Macrodomain_mask`) to workspace. For multiple macrodomain, organize them into cell strucutre (e.g. `{Ori, Ter}`, `Ori` and `Ter` are macrodomain masks loaded in advance)
 
 Main outputs:
 - `Btstrp_Acc`, `Btstrp_Vis_Nuc`, `Btstrp_Vis_Cyto`

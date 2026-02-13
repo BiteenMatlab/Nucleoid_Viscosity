@@ -1,13 +1,13 @@
-function [BtstrpResult, ind_pass]=Btstrp_showResult(Btstrp_NucVol,Btstrp_Acc,Btstrp_Vis_Nuc,Btstrp_Vis_Cyto,Btstrp_Vis_PeriCore,Btstrp_Vis_Domain,method)
-    if nargin<7 || isempty(method)
-        method = {'median','on'};
+function [BtstrpResult, ind_pass]=Btstrp_showResult(Btstrp_Acc,Btstrp_Vis_Nuc,Btstrp_Vis_Cyto,Btstrp_Vis_PeriCore,Btstrp_Vis_Domain,method)
+    if nargin<6 || isempty(method)
+        method = {'median','off'};
     end
     if ~isempty(method) && ischar(method)
         method = {method, 'on'};
     end
 
 
-    Book_all = cat(2,Btstrp_NucVol,Btstrp_Acc,Btstrp_Vis_Nuc,Btstrp_Vis_Cyto);
+    Book_all = cat(2,Btstrp_Acc,Btstrp_Vis_Nuc,Btstrp_Vis_Cyto);
     if ~isempty(Btstrp_Vis_PeriCore)
         Book_all = cat(2, Book_all, Btstrp_Vis_PeriCore);
     end
@@ -39,11 +39,7 @@ function [BtstrpResult, ind_pass]=Btstrp_showResult(Btstrp_NucVol,Btstrp_Acc,Bts
     clear Deter Book_all
     %%
     iter_gap = 1;
-    % Nucleoid volume ratio and accessibility
-    [NucVol_mean,NucVol_std]=...
-        Result_show(...
-        Btstrp_NucVol(ind_pass,:),...
-        iter_gap,'on','on','Volume Ratio');
+    % Nucleoid accessibility
     [Acc_mean,Acc_std]=...
         Result_show(...
         Btstrp_Acc(ind_pass,:),...
@@ -86,7 +82,6 @@ function [BtstrpResult, ind_pass]=Btstrp_showResult(Btstrp_NucVol,Btstrp_Acc,Bts
     end
     end
 
-    BtstrpResult.NucVol  = [NucVol_mean,NucVol_std];
     BtstrpResult.NucAcc  = [Acc_mean,Acc_std];
     BtstrpResult.NucVis  = [VisNuc_mean,VisNuc_std];
     BtstrpResult.CytoVis = [VisCyto_mean,VisCyto_std];
