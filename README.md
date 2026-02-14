@@ -193,7 +193,7 @@ Purpose:
 
 Set:
 - Segmentation: `Nuc_Seg(...,[cntr_low+0.05, cntr_low],...)`
-  - e.g. 10% margin added to contour line used to define nucleoid boundary, such that nucleoid is partitioned into periphery (region between nucleoid contour and inner contour) and core (within the inner contour)
+  - e.g. 5% margin added to contour line used to define nucleoid boundary, such that nucleoid is partitioned into periphery (region between nucleoid contour and inner contour) and core (within the inner contour)
 - Fit tolerances: `slack_d = 0.2`, `slack_acc = 0.1` (for both regions)
 
 Main outputs:
